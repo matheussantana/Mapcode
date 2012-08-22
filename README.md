@@ -29,13 +29,13 @@ For futher information see:
 One custom tag was created for each of the seven mapping types
 described earlier.
 
-<mbct:copy>: simple copy;
-<mbct:get>: simple substitution;
-<mbct:set>: variable attribution, used in indirect substitution;
-<mbct:if>: conditional;
-<mbct:iterate>: repetition;
-<mbct:include>: inclusion of another template; and
-<mbct:file>: creation of a new output file.
+*   \<mbct:copy\>: simple copy;
+*   \<mbct:get\>: simple substitution;
+*   \<mbct:set\>: variable attribution, used in indirect substitution;
+*   \<mbct:if\>: conditional;
+*   \<mbct:iterate\>: repetition;
+*   \<mbct:include\>: inclusion of another template; and
+*   \<mbct:file\>: creation of a new output file.
 
 The new tags reproduce the behavior of their corresponding original tags. Forexample, <m:if> works in the same way as <c:if>. But the new tags also generate annotations (Java comments) that mark relevant code locations, according to each mapping type. For example, the tag <m:copy> copies a piece of code from the template to the generated code, and automatically inserts a comment in the beginning and end. The tag <m:iterate> implements repetition, marking the beginning and end of thegenerated code, and also the start of each iteration. Figure 9 shows these two examples.
 
@@ -51,7 +51,7 @@ The result is that, for each piece of generated code, it is possible to identify
 
 ##What is JET?##
 
-[JET](http://www.eclipse.org/modeling/m2t/?project=jet#jet) is typically used in the implementation of a "code generator". A code-generator is an important component of Model Driven Development (MDD). The goal of MDD is to describe a software system using abstract models (such as EMF/ECORE models or UML models), and then refine and transform these models into code. Although is possible to create abstract models, and manually transform them into code, the real power of MDD comes from automating this process. Such transformations accelerate the MDD process, and result in better code quality. The transformations can capture the "best practices" of experts, and can ensure that a project consistently employes these practices.
+JET is typically used in the implementation of a "code generator". A code-generator is an important component of Model Driven Development (MDD). The goal of MDD is to describe a software system using abstract models (such as EMF/ECORE models or UML models), and then refine and transform these models into code. Although is possible to create abstract models, and manually transform them into code, the real power of MDD comes from automating this process. Such transformations accelerate the MDD process, and result in better code quality. The transformations can capture the "best practices" of experts, and can ensure that a project consistently employes these practices. [Source](http://www.eclipse.org/modeling/m2t/?project=jet#jet)
 
 
 ##Paper
