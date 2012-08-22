@@ -1,0 +1,99 @@
+<%-- 
+Example Mapcode - HTML code generator(JET engine based)
+http://matheussantana.github.com/Mapcode
+
+In this example we generate two HTML codes with annotations(HTML comments) for each mapping type based
+on templates(html.jet and students.jet) and a input model(model.xml).
+
+Each Mapcode tag is represented with mbct prefix.
+
+   Copyright (C) 2012 Matheus Santana
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Created by: Matheus Santana (matheusslima <at> yahoo <dot> com <dot> br)    
+--%>
+
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="mbct" id="br.ufscar.dc.mapcode.MapcodeTags" %>
+
+<mbct:scopy>
+<html>
+<head>
+<title>
+</mbct:scopy>
+<mbct:Get select="$currHtml/@title" />
+<mbct:scopy>
+</title>
+</head>
+<body>
+</mbct:scopy>
+
+<mbct:iterate select="$currHtml/question" var="t">
+	
+	<mbct:MyIfTag test="$t/@num = '1'">
+		<FONT size="3" face="Tahoma" color="blue">
+		<mbct:Get select="$t/@type" />
+		<mbct:scopy>
+			</FONT> <p>
+		</mbct:scopy> 
+		<mbct:Get select="$t/content" />
+		<mbct:scopy>
+			<p> <INPUT TYPE "TEXT" NAME="name" SIZE=50 VALUE=""> </p>
+		</mbct:scopy>
+	</mbct:MyIfTag> 
+	
+	<mbct:MyIfTag test="$t/@num = '2'">
+		
+		<mbct:scopy>
+			<FONT size="3" face="Tahoma" color="blue">
+		</mbct:scopy>
+		
+		<mbct:Get select="$t/@type" />
+		<mbct:scopy>
+			</FONT> <p>
+		</mbct:scopy>
+			<mbct:iterate select="$t/option" var="r"> 
+				<mbct:scopy>
+				<INPUT TYPE="RADIO" NAME="test1" VALUE="
+				</mbct:scopy>
+				<mbct:Get select="$r/@id" /><mbct:scopy> "> </mbct:scopy>
+				<mbct:Get select="$r" />
+				<mbct:scopy> 
+				<p> 
+				</mbct:scopy>
+			</mbct:iterate>
+	</mbct:MyIfTag>
+	
+	<mbct:MyIfTag test="$t/@num = '3'">
+		<mbct:scopy>
+		<FONT size="3" face="Tahoma" color="blue">
+		</mbct:scopy>
+		<mbct:Get select="$t/@type" />
+		<mbct:scopy>
+		</FONT> <p>
+		</mbct:scopy>
+		<mbct:Get select="$t/content" />
+		<mbct:scopy>
+		</p><INPUT TYPE="RADIO" NAME="test2" VALUE="True">True<p>
+		<INPUT TYPE="RADIO" NAME="test2" VALUE="False">False<p>
+		</mbct:scopy>
+	</mbct:MyIfTag>
+<mbct:file template="templates/students.jet"
+	path="{$org.eclipse.jet.resource.project.name}/generated/students.html" />
+	<mbct:include template="templates/students.jet"/>
+</mbct:iterate>
+<mbct:scopy>
+</body>
+</html>
+</mbct:scopy>

@@ -1,0 +1,20 @@
+<survey title="Automata theory - Exam">
+   <question num="1" type="Text">
+       <content>What is a Deterministic finite automaton?</content>
+   </question>
+   <question num="2" type="ManyChoice">
+       <content>Qual afirma right?</content>
+       <option id="1" right="false">P != NP</option>
+       <option id="2" right="false">P = NP.</option>
+       <option id="3" right="true">Unsolved problem </option>
+   </question>
+   <question num="3" type="TrueOrFalse">
+       <content>The Turing machine mathematically models a machine that mechanically operates on a tape.</content>
+   </question>  
+   <student student_id="1234569">
+   		<name>Peter</name>
+   	</student>
+   	<student student_id="547862">
+   		<name>Daniel</name>
+   	</student>
+</survey>

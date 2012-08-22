@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: html_gen
+Bundle-SymbolicName: html_gen;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-ClassPath: .,bin/
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.jet;bundle-version="1.1.0",
+ br.ufscar.dc.mapcode;bundle-version="1.0.0"
