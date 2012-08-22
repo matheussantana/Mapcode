@@ -63,6 +63,7 @@ JET is typically used in the implementation of a "code generator". A code-genera
 ##Requirements
 
 [Eclipse Modelling IDE](http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/junor)
+
 [Java Emitter Templates](http://www.eclipse.org/modeling/m2t/downloads/?project=jet) (JET) engine
 
 
@@ -71,8 +72,7 @@ JET is typically used in the implementation of a "code generator". A code-genera
   1. Go to eclipse directory
   2. Copy br.ufscar.dc.mapcode_1.0.0.noqualifier.jar(inside the build/ folder) to the plugin/ directory
 
-Exemple of Mapcode can be found in doc/example
-
+Exemple(Eclipse project) of Mapcode can be found in doc/example/html_gen
 ##Getting started with JET
 
  [JET Tutorial Part 1 (Introduction to JET)](http://www.eclipse.org/articles/Article-JET/jet_tutorial1.html)
