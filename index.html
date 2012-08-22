@@ -28,32 +28,106 @@
         </ul>
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <h1>Mapcode</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<h2>About</h2>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p><strong>Mapcode</strong> - Mapping Generated Code to a Reference Implementation – Towards Automatic Code Migration</p>
+
+<p>This plugin implements an initial step towards automatic code migration in the context of MDE-based projects that use template-based code generation(<a href="http://www.eclipse.org/modeling/m2t/?project=jet">Java Emitter Templates</a> (JET) engine - <a href="http://www.eclipse.org/">Eclipse IDE</a>) backed up by a reference implementation. Different types of mapping between a template and the generated code are identified, each one covering a different code generation possibility. The mapping is established by the automatic insertion, in the generated code, of special markings that delineate the boundaries of each mapping type.</p>
+
+<p>Created by: </p>
+
+<pre><code>Matheus Santana
+(matheus santana &lt;at&gt; comp &lt;dot&gt; ufscar &lt;dot&gt; br)
+UFSCar, Federal University of São Carlos, Brazil
+Computer Departament
+Center of Exact Sciences and Technology
+http://www2.comp.ufscar.br/~matheus_santana/
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>For futher information see:</p>
 
-<h3>Designer Templates</h3>
+<p><a href="http://matheussantana.github.com/Mapcode/">Project website</a></p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p><a href="https://github.com/matheussantana/Mapcode">Code repository</a></p>
 
-<h3>Rather Drive Stick?</h3>
+<p><a href="http://www2.comp.ufscar.br/%7Ematheus_santana/static.php?page=static120821-224438">More info</a></p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h2>Mapcode Tags</h2>
 
-<h3>Authors and Contributors</h3>
+<p>One custom tag was created for each of the seven mapping types
+described earlier.</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ul>
+<li>  &lt;mbct:copy&gt;: simple copy;</li>
+<li>  &lt;mbct:get&gt;: simple substitution;</li>
+<li>  &lt;mbct:set&gt;: variable attribution, used in indirect substitution;</li>
+<li>  &lt;mbct:if&gt;: conditional;</li>
+<li>  &lt;mbct:iterate&gt;: repetition;</li>
+<li>  &lt;mbct:include&gt;: inclusion of another template; and</li>
+<li>  &lt;mbct:file&gt;: creation of a new output file.</li>
+</ul><p>The new tags reproduce the behavior of their corresponding original tags. Forexample,  works in the same way as . But the new tags also generate annotations (Java comments) that mark relevant code locations, according to each mapping type. For example, the tag  copies a piece of code from the template to the generated code, and automatically inserts a comment in the beginning and end. The tag  implements repetition, marking the beginning and end of thegenerated code, and also the start of each iteration. Figure 9 shows these two examples.</p>
 
-<h3>Support or Contact</h3>
+<p><img src="http://www2.comp.ufscar.br/%7Ematheus_santana/images/mapcode/mapcode.png" alt="alt text" title="Mapcode mapping types"></p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>For type 1, the inserted comment (//T1:templ1.jet#1) indicates the type of mapping (T1), the template that generated this piece of code (templ1.jet), and a unique identifier (number 1 after character #). For type 4, similar comments surround the generated code (//T4:templ2.jet#1). In addition, other comments (//T4:i=1,
+//T4:i=2 and //T4:i=3) mark the places where each iteration starts.</p>
+
+<p>With the new tags, it is possible to generate exactly the same type of code as with the original tags, but with the side effect that now the generated code is completely annotated, and the mapping between generated code and the templates is established.</p>
+
+<p>The result is that, for each piece of generated code, it is possible to identify the mapping type, the template that generated this particular piece of code and even which part of the template was responsible for it, by locating the nearest surrounding generated comments. Code migration can be made based on this information.</p>
+
+<h2>What is JET?</h2>
+
+<p>JET is typically used in the implementation of a "code generator". A code-generator is an important component of Model Driven Development (MDD). The goal of MDD is to describe a software system using abstract models (such as EMF/ECORE models or UML models), and then refine and transform these models into code. Although is possible to create abstract models, and manually transform them into code, the real power of MDD comes from automating this process. Such transformations accelerate the MDD process, and result in better code quality. The transformations can capture the "best practices" of experts, and can ensure that a project consistently employes these practices. <a href="http://www.eclipse.org/modeling/m2t/?project=jet#jet">Source</a></p>
+
+<h2>Paper</h2>
+
+<p><a href="http://www2.comp.ufscar.br/%7Ematheus_santana/paper/lucredio.pdf">Lucrédio and Fortes, Mapping Generated Code to a Reference Implementation – Towards Automatic Code Migration.</a></p>
+
+<p><a href="http://www2.comp.ufscar.br/%7Ematheus_santana/paper/Mapcode.pdf">Lima and Lucrédio, Mapeamento entre geradores de código e uma implementação de referência</a></p>
+
+<h2>Requirements</h2>
+
+<p><a href="http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/junor">Eclipse Modelling IDE</a></p>
+
+<p><a href="http://www.eclipse.org/modeling/m2t/downloads/?project=jet">Java Emitter Templates</a> (JET) engine</p>
+
+<h2>Installation</h2>
+
+<ol>
+<li>Go to eclipse directory</li>
+<li>Copy br.ufscar.dc.mapcode_1.0.0.noqualifier.jar(inside the build/ folder) to the plugin/ directory</li>
+</ol><p>Exemple(Eclipse project) of Mapcode can be found in doc/example/html_gen</p>
+
+<h2>Getting started with JET</h2>
+
+<p><a href="http://www.eclipse.org/articles/Article-JET/jet_tutorial1.html">JET Tutorial Part 1 (Introduction to JET)</a></p>
+
+<p><a href="http://www.ibm.com/developerworks/opensource/library/os-ecl-jet/">Create more -- better -- code in Eclipse with JET</a></p>
+
+<h2>License</h2>
+
+<p>The Mapcode is released under the GNU Public License 3.</p>
+
+<p>You are free to use and modify the Anemo. All changes 
+must be uploaded to Git Hub under Mapcode.</p>
+
+<pre><code>Copyright (C) 2012 Matheus Santana
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+</code></pre>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/matheussantana">matheussantana</a></p>
